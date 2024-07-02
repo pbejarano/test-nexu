@@ -1,7 +1,7 @@
 const { app } = require('@azure/functions');
-const controller = require("../controllers/csHealth");
+const controller = require("../controllers/csBrands");
 
-app.http('health', {
+app.http('brands', {
     methods: ['GET', 'POST'],
     authLevel: 'anonymous',
     handler: controller.Handler
