@@ -2,12 +2,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Attach to Node Functions",
             "type": "node",
-            "request": "attach",
-            "restart": true,
-            "port": 9229,
-            "preLaunchTask": "func: host start"
+    "request": "launch",
+    "name": "Mocha Tests",
+    "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+    "args": 
+    [
+        "--timeout",
+        "999999",
+        "--colors",
+        "'${workspaceFolder}/{,!(node_modules)/}*/*.test.js'"
+    ],
+  "internalConsoleOptions": "openOnSessionStart"
         }
     ]
 }

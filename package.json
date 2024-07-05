@@ -5,7 +5,8 @@
   "main": "src/functions/*.js",
   "scripts": {
     "start": "func start",
-    "test": "echo \"No tests yet...\""
+    "test": "echo \"No tests yet...\"",
+    "testit": "mocha --recursive '**/tests/*'"
   },
   "dependencies": {
     "@azure/functions": "^4.0.0",
@@ -13,6 +14,10 @@
   },
   "devDependencies": {
     "azure-functions-core-tools": "^4.x",
-    "prisma": "^5.16.1"
+    "chai": "^4.2.0",
+    "mocha": "^7.0.0",
+    "prisma": "^5.16.1",
+    "sinon": "^8.1.0",
+    "supertest": "^7.0.0"
   }
 }
