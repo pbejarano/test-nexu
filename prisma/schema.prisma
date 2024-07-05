@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model brands {
+  id         Int       @id @default(autoincrement())
+  nombre     String    @unique(map: "nombre") @db.VarChar(255)
+  created_at DateTime? @default(dbgenerated("(now())")) @db.Timestamp(0)
+  models     models[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model models {
+  id            Int       @id @default(autoincrement())
+  name          String    @db.VarChar(255)
+  average_price Decimal   @db.Decimal(10, 2)
+  id_brand      Int
+  created_at    DateTime? @default(dbgenerated("(now())")) @db.Timestamp(0)
+  brands        brands    @relation(fields: [id_brand], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "models_ibfk_1")
+
+  @@index([id_brand], map: "id_brand")
+}
+
+model models_json {
+  id            Int      @id
+  name          String?  @db.VarChar(255)
+  average_price Decimal? @db.Decimal(10, 2)
+  brand_name    String?  @db.VarChar(255)
+}
