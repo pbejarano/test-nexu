@@ -1,4 +1,3 @@
-# test-nexu
 # Bienvenido al API para Brands & Models!
 
 Hola, esta API está hecha con NodeJS, Prisma ORM en Azure function.
